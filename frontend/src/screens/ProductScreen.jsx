@@ -1,6 +1,5 @@
 import {React, useState, useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
-import products from '../products'
 import {
     Button,
   Card,
@@ -25,7 +24,7 @@ const ProductScreen = () => {
         setProduct(data)
       }
       fetchProduct()
-    }, [])
+    }, [params.id])
 
   return (
     <>
