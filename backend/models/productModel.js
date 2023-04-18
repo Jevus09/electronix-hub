@@ -34,7 +34,7 @@ const productSchema = mongoose.Schema({
         required: true,
 
     },
-    decription: {
+    description: {
         type: String,
         required: true,
 
@@ -49,19 +49,19 @@ const productSchema = mongoose.Schema({
 
     },
     numReviews: {
-        type: number,
+        type: Number,
         required: true,
         default: 0
 
     },
     price: {
-        type: number,
+        type: Number,
         required: true,
         default: 0
 
     },
     countInStock: {
-        type: number,
+        type: Number,
         required: true,
         default: 0
 
