@@ -1,24 +1,26 @@
 import {React, useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
-import {
-    Button,
-  Card,
-  Col,
-  Image,
-  ListGroup,
-  ListGroupItem,
-  Row,
-} from 'react-bootstrap'
+import { Link, useParams, useNavigate  } from 'react-router-dom'
 import Rating from '../components/Rating'
 import {useDispatch, useSelector} from 'react-redux'
 import { listProductDetails } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import {
+    Button, Card, Col, Row,
+    Image, ListGroup, ListGroupItem, FormControl,  
+} 
+from 'react-bootstrap'
+
+
+
+
 
 const ProductScreen = () => {
+    const navigate = useNavigate()
     const params = useParams()
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
+    const [qty, setQty] = useState(0)
 
     const {loading, error, product } = productDetails
 
@@ -29,6 +31,11 @@ const ProductScreen = () => {
 
 
       }, [dispatch, params.id])
+
+
+      const addToCartHandler = () => {
+        navigate(`/cart/${params.id}?qty=${qty}`)
+      }
 
   return (
     <>
@@ -73,14 +80,40 @@ const ProductScreen = () => {
                     {product.countInStock  > 0 ?'In Stock' : 'Out of Stock'}
                   </Col>
                 </Row>
+                {/* ADD QTY OPTION */}
               </ListGroupItem>
+                  {product.countInStock > 0 && (
+                      <ListGroupItem>
+                        <Row>
+                          <Col>Qty</Col>
+                          <Col>
+                            <FormControl 
+                              as='select' 
+                              value={qty} 
+                              onChange={(e) => setQty(e.target.value)}>
+                                {[...Array(product.countInStock).keys()].map(x => (
+                                  <option key={x + 1} value={x + 1} > {x +1} </option>
+                                ))}
+                            </FormControl>
+                          </Col>
+                        </Row>
+
+
+                      </ListGroupItem>
+
+                      )}
+
               <ListGroupItem style={{
                         display:'flex',
                         justifyContent: 'center',
                         alignItems: 'center'
 
                     }}>
+
+                    {/* ADD TO CART BUTTON */}  
+
                 <Button 
+                    onClick={addToCartHandler}
                     className="btn btn-lg btn-dark"
                     type='button' 
                     disabled={product.countInStock  === 0}   >
