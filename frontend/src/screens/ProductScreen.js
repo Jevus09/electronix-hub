@@ -20,7 +20,7 @@ const ProductScreen = () => {
     const params = useParams()
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
 
     const {loading, error, product } = productDetails
 
