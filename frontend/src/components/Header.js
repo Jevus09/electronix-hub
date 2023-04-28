@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header>
-        <Navbar className='p-4' bg="" variant=''  expand="lg" collapseOnSelect style={{display:'flex', position:'fixed', top: 0, zIndex: 999, width: '100%', backgroundColor:'white'}} >
+        <Navbar className='p-4' bg="" variant=''  expand="lg" collapseOnSelect style={{display:'flex', top: 0, zIndex: 999, width: '100%', backgroundColor:'white'}} >
       <Container >
         <LinkContainer to="/">
         <Navbar.Brand ><BiDesktop style={{fontSize: '1.5vw'}}/>ElectronixHub</Navbar.Brand>
@@ -28,8 +28,16 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            <LinkContainer to='/'> 
+            <Nav.Link  ><i class="fa-sharp fa-solid fa-house"></i>Home</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to='/products'> 
+            <Nav.Link  ><i class="fa-sharp fa-solid fa-tablet"></i> Products</Nav.Link>
+            </LinkContainer>
+
             <LinkContainer to="/cart">
-            <Nav.Link ><i className='fas fa-shopping-cart' ></i> Cart</Nav.Link>
+            <Nav.Link><i className='fas fa-shopping-cart' ></i> Cart</Nav.Link>
             </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>

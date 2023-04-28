@@ -6,7 +6,7 @@ import { listProducts } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Categories from '../components/Categories'
-import AllItems from '../components/AllItems'
+import Banner from '../components/Banner'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ const HomeScreen = () => {
         ))}
     </Row> }
     </div>
-    <AllItems/>
+    <Banner/>
     </>
   )
 }

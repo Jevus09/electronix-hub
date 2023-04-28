@@ -11,6 +11,9 @@ import RegisterScreen from './screens/registerScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
+import CategoryScreen from './screens/CategoryScreen'
+import AllProductsScreen from './screens/AllProductsScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
         <Container>
           <Routes>            
             <Route path='/login' element={<LoginScreen/>} />
+            <Route path='/products' element={<AllProductsScreen/>} />
+            <Route path='/placeorder' element={<PlaceOrderScreen/>} />
+            <Route path='/accessories' element={<CategoryScreen/>} />
             <Route path='/payment' element={<PaymentScreen/>} />
             <Route path='/register' element={<RegisterScreen/>} />
             <Route path='/profile' element={<ProfileScreen/>} />
