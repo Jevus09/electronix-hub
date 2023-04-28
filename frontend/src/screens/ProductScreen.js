@@ -115,7 +115,7 @@ const ProductScreen = () => {
 
                 <Button 
                     onClick={addToCartHandler}
-                    className="btn btn-lg btn-dark"
+                    className="btn btn-outline-light border border-primary"
                     type='button' 
                     disabled={product.countInStock  === 0}   >
                     Add to Cart

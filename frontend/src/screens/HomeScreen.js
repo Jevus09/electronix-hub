@@ -5,6 +5,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import { listProducts } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Categories from '../components/Categories'
+import AllItems from '../components/AllItems'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -14,20 +16,26 @@ const HomeScreen = () => {
   useEffect(() =>{
     dispatch(listProducts())     
       
-    }, [dispatch])
+  }, [dispatch])
 
+  // Randomly shuffle the products array
+  const shuffledProducts = [...products].sort(() => 0.5 - Math.random())
 
   return (
     <>
-    <h1>Latest Products</h1>
+    <Categories/>
+    <div style={{ display:'grid', alignItems:'center', justifyContent:'center', margin: '10vh 0 '}}>
+    <h1 style={{ display:'grid', alignItems:'center', justifyContent:'center'}}>Latest Products</h1>
     {loading ? <Loader/> : error ? <Message variant='danger'  >{error}</Message>: 
-    <Row>
-        {products.map(product => (
+    <Row >
+        {shuffledProducts.slice(0, 4).map(product => (
             <Col key={product._id} sm={12} md={6} lg={4}  xl={3} >
                 <Product product={product} />
             </Col>
         ))}
     </Row> }
+    </div>
+    <AllItems/>
     </>
   )
 }

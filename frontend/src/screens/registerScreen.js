@@ -41,19 +41,14 @@ const RegisterScreen = () => {
         }
     }
 
-
-
-
-
-
   return (
     <FormContainer>
         <h1>Sign Up</h1>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
         {loading && <Loader/>}
-        <Form onSubmit={submitHandler}>
-        <Form.Group controlId='name'>
+        <Form onSubmit={submitHandler} className='pb-3' >
+        <Form.Group controlId='name' >
             <Form.Label>Name</Form.Label>
             <Form.Control type='name' placeholder='Enter name' value={name}
             onChange={(e) => setName(e.target.value)} required >
@@ -84,10 +79,11 @@ const RegisterScreen = () => {
             </Form.Control>
             </Form.Group>
 
-            <Button type='submit' variant='primary'>
+
+        </Form>
+        <Button type='submit' variant='primary'>
                 Register
             </Button>
-        </Form>
         <Row className='py-3' >
             <Col>
             Have an account?{' '}

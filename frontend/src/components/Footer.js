@@ -7,7 +7,7 @@ const Footer = () => {
     <footer>
         <Container>
             <Row>
-                <Col className='text-center py-3'>
+                <Col className='text-center py-3' style={{color:'black'}}>
                     Copyright &copy; ElectronixHub
                 </Col>
             </Row>

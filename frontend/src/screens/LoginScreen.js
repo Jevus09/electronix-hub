@@ -46,8 +46,8 @@ const LoginScreen = () => {
         <h1>Sign In</h1>
         {error && <Message variant='danger'>{error}</Message>}
         {loading && <Loader/>}
-        <Form onSubmit={submitHandler}>
-            <Form.Group controlId='email'>
+        <Form onSubmit={submitHandler} className='pb-3'>
+            <Form.Group controlId='email' className='pb-2'>
             <Form.Label>Email Address</Form.Label>
             <Form.Control type='emial' placeholder='Enter email' value={email}
             onChange={(e) => setEmail(e.target.value)}>
@@ -61,10 +61,11 @@ const LoginScreen = () => {
             </Form.Control>
             </Form.Group>
 
-            <Button type='submit' variant='primary'>
+
+        </Form>
+        <Button type='submit' variant='primary' className=''>
                 Sign In
             </Button>
-        </Form>
         <Row className='py-3' >
             <Col>
             New Customer?{' '}
