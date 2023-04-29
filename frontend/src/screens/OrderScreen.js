@@ -22,7 +22,7 @@ const OrderScreen = ({ history }) => {
     }
 
     order.itemsPrice = addDecimals(
-      order.orderItems.reduce(
+        order.orderItems.reduce(
         (accumulator, item) => accumulator + item.price * item.qty,
         0
       )
@@ -30,9 +30,10 @@ const OrderScreen = ({ history }) => {
   }
 
   useEffect(() => {
-    dispatch(getOrderDetails(orderId))
-    // eslint-disable-next-line
-  }, [])
+    if(!order || order._id !== orderId) {
+        dispatch(getOrderDetails(orderId))
+    }
+}, [order, orderId, dispatch])
 
   return loading ? (
     <Loader />
@@ -66,7 +67,7 @@ const OrderScreen = ({ history }) => {
             <ListGroup.Item>
               <h2>Payment Method</h2>
               <p>
-                <strong>Method: </strong>
+                <strong>Method: PayPal </strong>
                 {order.paymentMethod}
               </p>
               {order.isPaid ? <Message variant='success'>Paid on {order.paidAt}</Message> : <Message variant='danger'>Not Paid</Message> }
