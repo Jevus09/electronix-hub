@@ -29,7 +29,7 @@ const HomeScreen = () => {
     {loading ? <Loader/> : error ? <Message variant='danger'  >{error}</Message>: 
     <Row >
         {shuffledProducts.slice(0, 4).map(product => (
-            <Col key={product._id} sm={12} md={6} lg={4}  xl={3} >
+            <Col style={{ height: '100%'}} key={product._id} sm={12} md={6} lg={4}  xl={3} >
                 <Product product={product} />
             </Col>
         ))}

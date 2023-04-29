@@ -70,7 +70,7 @@ const ProductScreen = () => {
                 <Image src={product.image} alt={product.name} fluid />
               </div>
               <Row md={3} style={{marginTop: '5px'}}>
-                <Image src={product.image} alt={product.name}  fluid />
+                <Image src={product.image1} alt={product.name}  fluid />
                 <Image src={product.image} alt={product.name} fluid  />
                 <Image src={product.image} alt={product.name} fluid  />
               </Row>
