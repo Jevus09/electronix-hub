@@ -15,6 +15,7 @@ import CategoryScreen from './screens/CategoryScreen'
 import AllProductsScreen from './screens/AllProductsScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
+import UserListScreen from './screens/UserListScreen'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Container>
           <Routes>            
             <Route path='/login' element={<LoginScreen/>} />
+            <Route path='/admin/userlist' element={<UserListScreen/>} />
             <Route path='/products' element={<AllProductsScreen/>} />
             <Route path='/placeorder' element={<PlaceOrderScreen/>} />
             <Route path='/order/:id' element={<OrderScreen/>} />
