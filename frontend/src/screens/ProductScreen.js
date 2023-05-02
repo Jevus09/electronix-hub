@@ -18,20 +18,14 @@ import {
 } from 'react-bootstrap'
 import Product from '../components/Product'
 
-
-
-
 const ProductScreen = () => {
   const navigate = useNavigate()
   const params = useParams()
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
   const [qty, setQty] = useState(1)
-  
 
   const { product } = productDetails
-
-
 
   useEffect(() => {
     dispatch(listProductDetails(params.id))
@@ -40,8 +34,8 @@ const ProductScreen = () => {
   const addToCartHandler = () => {
     navigate(`/cart/${params.id}?qty=${qty}`)
   }
-
   const productList = useSelector((state) => state.productList)
+
   const { loading, error, products } = productList
   const shuffledProducts = products?.length
     ? [...products].sort(() => 0.5 - Math.random())
@@ -50,8 +44,6 @@ const ProductScreen = () => {
   useEffect(() => {
     dispatch(listProducts())
   }, [dispatch])
-
-
 
   return (
     <div style={{ marginTop: '5vh' }}>
@@ -66,14 +58,36 @@ const ProductScreen = () => {
         <Row>
           <Col md={6}>
             <div>
-              <div className='pic'>
-                <Image src={product.image} alt={product.name} fluid />
+              <div
+                className='pic'
+                style={{
+                  marginTop: '55px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fluid
+                  style={{ height: '350px', objectFit: 'contain', maxWidth: '380px' }}
+                />
               </div>
-              <Row md={3} style={{marginTop: '5px'}}>
-                <Image src={product.image1} alt={product.name}  fluid />
-                <Image src={product.image} alt={product.name} fluid  />
-                <Image src={product.image} alt={product.name} fluid  />
-              </Row>
+              <div
+                className='d-flex flex-wrap align-items-center'
+                style={{ justifyContent: 'space-around', marginTop: '55px'  }}
+              >
+                <Col xs={4} sm={3} className='mb-3'>
+                  <Image src={product.image1} alt={product.name} fluid />
+                </Col>
+                <Col xs={4} sm={3} className='mb-3'>
+                  <Image src={product.image2} alt={product.name} fluid />
+                </Col>
+                <Col xs={4} sm={3} className='mb-3'>
+                  <Image src={product.image3} alt={product.name} fluid />
+                </Col>
+              </div>
             </div>
           </Col>
           <Col md={6}>
@@ -106,7 +120,8 @@ const ProductScreen = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  width: '15vw',
+                  width: '18vw',
+                  minWidth: '350px',
                 }}
               >
                 <ListGroup variant='flush' style={{ width: '100%' }}>
@@ -192,7 +207,7 @@ const ProductScreen = () => {
         ) : (
           <Row>
             {shuffledProducts.slice(0, 4).map((filteredProduct) => (
-              <Col key={filteredProduct._id} sm={12} md={6} lg={4} xl={3}>
+              <Col key={filteredProduct._id}  sm={12} md={6} lg={4} xl={3}>
                 <Product product={filteredProduct} />
               </Col>
             ))}

@@ -25,7 +25,7 @@ const HomeScreen = () => {
     <>
     <Categories/>
     <div style={{ display:'grid', alignItems:'center', justifyContent:'center', margin: '10vh 0 '}}>
-    <h1 style={{ display:'grid', alignItems:'center', justifyContent:'center'}}>Latest Products</h1>
+    <h1 style={{ display:'grid', alignItems:'center', justifyContent:'center'}}>Featured Products</h1>
     {loading ? <Loader/> : error ? <Message variant='danger'  >{error}</Message>: 
     <Row >
         {shuffledProducts.slice(0, 4).map(product => (

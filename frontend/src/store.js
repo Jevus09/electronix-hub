@@ -5,13 +5,13 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import { productListReducer, productDetailsReducer } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducer'
 import { userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateReducer } from './reducers/userReducers'
-import { orderCreateReducer, orderDetailsReducer } from './reducers/orderReducers'
+import { orderCreateReducer, orderDetailsReducer, orderListMyReducer, orderPayReducer } from './reducers/orderReducers'
 
 
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 
-const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
+const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {}
 
@@ -25,19 +25,26 @@ const reducer = combineReducers({
     userUpdate: userUpdateReducer,
     orderCreate : orderCreateReducer,
     orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer,
+    orderListMy: orderListMyReducer,
 
 })
 
-const initialState = {
-    cart:{cartItems: cartItemsFromStorage, shippingAddress: shippingAddressFromStorage}, 
-    userLogin: {userInfo: userInfoFromStorage}
-}
+const preloadedState = {
+    cart: {
+      cartItems: cartItemsFromStorage,
+      shippingAddress: shippingAddressFromStorage,
+    },
+    userLogin: {
+      userInfo: userInfoFromStorage,
+    },
+  };
 
 
 
 const middleware = [thunk]
 
-const store = configureStore({reducer}, initialState, composeWithDevTools(applyMiddleware(...middleware)))
+const store = configureStore({reducer, preloadedState}, composeWithDevTools(applyMiddleware(...middleware)))
 
 
 export default store

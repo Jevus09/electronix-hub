@@ -29,11 +29,11 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <LinkContainer to='/'> 
-            <Nav.Link  ><i class="fa-sharp fa-solid fa-house"></i>Home</Nav.Link>
+            <Nav.Link  ><i class="fa-sharp fa-solid fa-house"></i> Home</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to='/products'> 
-            <Nav.Link  ><i class="fa-sharp fa-solid fa-tablet"></i> Products</Nav.Link>
+            <Nav.Link  ><i class="fa-solid fa-headphones"></i> Products</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/cart">

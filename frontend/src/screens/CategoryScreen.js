@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { listProducts } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 
 const CategoryScreen = () => {
@@ -23,7 +23,15 @@ const CategoryScreen = () => {
   return (
     <>
     <div style={{ display:'grid', alignItems:'center', justifyContent:'center', margin: '10vh 0 '}}>
-    <h1 style={{ display:'grid', alignItems:'center', justifyContent:'center'}}>{(params.id).toUpperCase()}</h1>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-betudeween', marginBottom:'50px'}}>
+      <Link className='btn btn-outline-dark my-3' to='/'>
+        Go back
+      </Link>
+    <h1 >{(params.id).toUpperCase()}</h1>
+    <Link className='btn btn-outline-dark my-3' to='/products'>
+        All Products
+      </Link>
+    </div>
     {loading ? <Loader/> : error ? <Message variant='danger'  >{error}</Message>: 
     <Row equal >
         {products.filter(product => product.category === `${params.id}`).map(filteredProduct => (
