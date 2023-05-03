@@ -6,6 +6,9 @@ import { USER_DELETE_FAIL, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAIL
          USER_LIST_SUCCESS, 
          USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, 
          USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, 
+         USER_UPDATE_ADMIN_FAIL, 
+         USER_UPDATE_ADMIN_REQUEST, 
+         USER_UPDATE_ADMIN_SUCCESS, 
          USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../constants/userConstants"
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
@@ -207,6 +210,44 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       }
       dispatch({
         type: USER_DELETE_FAIL,
+        payload: message,
+      })
+    }
+  }
+
+
+
+  export const updateUserAdmin = (user) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: USER_UPDATE_ADMIN_REQUEST,
+      })
+  
+      const {
+        userLogin: { userInfo },
+      } = getState()
+  
+      const config = {
+        headers: {
+          "Content-Type" : 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+  
+      const {data} = await axios.put(`/api/users/${user._id}`, user, config)
+  
+      dispatch({ type: USER_UPDATE_ADMIN_SUCCESS })
+      dispatch({ type: USER_DETAILS_SUCCESS, payload: data })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      if (message === 'Not authorized, token failed') {
+        dispatch(logout())
+      }
+      dispatch({
+        type: USER_UPDATE_ADMIN_FAIL,
         payload: message,
       })
     }
