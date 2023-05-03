@@ -23,7 +23,7 @@ const CategoryScreen = () => {
   return (
     <>
     <div style={{ display:'grid', alignItems:'center', justifyContent:'center', margin: '10vh 0 '}}>
-      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-betudeween', marginBottom:'50px'}}>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'50px'}}>
       <Link className='btn btn-outline-dark my-3' to='/'>
         Go back
       </Link>

@@ -1,11 +1,15 @@
 {
+  "homepage": "http://jevus09.github.io/electronix-hub",
   "name": "electronix-hub",
   "version": "1.0.0",
   "description": "MERN app",
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node backend/server",
+    "build": "react-scripts build",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -21,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/Jevus09/electronix-hub/issues"
   },
-  "homepage": "https://github.com/Jevus09/electronix-hub#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
@@ -29,10 +32,12 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.4"
+    "mongoose": "^7.0.4",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
+    "gh-pages": "^5.0.0",
     "nodemon": "^2.0.22"
   }
 }
