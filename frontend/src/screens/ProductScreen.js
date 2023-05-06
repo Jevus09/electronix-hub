@@ -27,9 +27,20 @@ const ProductScreen = () => {
 
   const { product } = productDetails
 
+  const [image, setImage] = useState(product?.image)
+
+  const changeImage = (e) => {
+    setImage(e.target.src)
+  };
+
   useEffect(() => {
     dispatch(listProductDetails(params.id))
   }, [dispatch, params.id])
+
+  useEffect(() => {
+    // reset the image state when a new product is clicked
+    setImage(product?.image)
+  }, [product])
 
   const addToCartHandler = () => {
     navigate(`/cart/${params.id}?qty=${qty}`)
@@ -47,7 +58,7 @@ const ProductScreen = () => {
 
   return (
     <div style={{ marginTop: '5vh' }}>
-      <Link className='btn btn-outline-dark my-3' to='/'>
+      <Link className='btn btn-outline-dark my-3' onClick={() => window.history.back()}>
         Go back
       </Link>
       {loading ? (
@@ -68,7 +79,7 @@ const ProductScreen = () => {
                 }}
               >
                 <Image
-                  src={product.image}
+                  src={image}
                   alt={product.name}
                   fluid
                   style={{ height: '350px', objectFit: 'contain', maxWidth: '380px' }}
@@ -79,14 +90,14 @@ const ProductScreen = () => {
                 style={{ justifyContent: 'space-around', marginTop: '55px'  }}
               >
                 <Col xs={4} sm={3} className='mb-3'>
-                  <Image src={product.image1} alt={product.name} fluid />
+                  <Image onClick={changeImage} src={product.image1} alt={product.name} fluid />
                 </Col>
                 <Col xs={4} sm={3} className='mb-3'>
-                  <Image src={product.image2} alt={product.name} fluid />
+                  <Image onClick={changeImage} src={product.image2} alt={product.name} fluid />
                 </Col>
                 <Col xs={4} sm={3} className='mb-3'>
-                  <Image src={product.image3} alt={product.name} fluid />
-                </Col>
+                  <Image onClick={changeImage} style={{ maxHeight: '350px',  }} src={product.image3} alt={product.name} fluid />
+                </Col> 
               </div>
             </div>
           </Col>

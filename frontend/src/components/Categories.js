@@ -11,7 +11,7 @@ const data = [
     id: 1,
     image: headphone,
     title: 'Headphones',
-    link: '/Accessories'
+    link: '/headphones'
   },
   {
     id: 2,
