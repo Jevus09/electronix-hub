@@ -35,8 +35,7 @@ const data = [
 
 const Categories = () => {
   return (
-     <Container fluid="md"style={{margin: '12vh 0 5vh 0 '}} >
-          <hr/>
+     <Container fluid="md"style={{margin: '8vh 0 8vh 0 '}} >
       <Row>
         {data.map(({ image, id, title, link }) => (            
           <Col key={id}  md={3} xs={6}

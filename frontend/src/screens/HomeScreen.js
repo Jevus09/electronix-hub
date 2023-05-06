@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Categories from '../components/Categories'
 import Banner from '../components/Banner'
+import Carousel from '../components/Carousel'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const HomeScreen = () => {
 
   return (
     <>
+    <Carousel />
     <Categories/>
     <div style={{ display:'grid', alignItems:'center', justifyContent:'center', margin: '10vh 0 '}}>
     <h1 style={{ display:'grid', alignItems:'center', justifyContent:'center'}}>Featured Products</h1>
