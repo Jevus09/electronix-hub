@@ -20,7 +20,7 @@ const HomeScreen = () => {
   }, [dispatch])
 
   // Randomly shuffle the products array
-  const shuffledProducts = [...products].sort(() => 0.5 - Math.random())
+  const shuffledProducts = products ? [...products].sort(() => 0.5 - Math.random()) : [];
 
   return (
     <>

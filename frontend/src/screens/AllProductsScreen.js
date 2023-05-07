@@ -5,16 +5,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import SearchBox from '../components/SearchBox';
+import Paginate from '../components/Paginate';
 
 const AllProductsScreen = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const params = useParams()
+  const { pageNumber } = params || 1
+
+  const { keyword } = params;
+
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products, page, pages } = productList;
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   return (
     <>
@@ -26,7 +33,8 @@ const AllProductsScreen = () => {
           margin: '10vh 0 ',
         }}
       >
-        <div style={{ display: 'grid', gridArea:'auto' }} >
+        <div style={{ display: 'grid', gridArea: 'auto' }}>
+          <SearchBox />
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
             <Link
               className='btn btn-outline-dark my-3'
@@ -37,7 +45,7 @@ const AllProductsScreen = () => {
             </Link>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <h1 >Products</h1>
+            <h1>Products</h1>
           </div>
         </div>
         {loading ? (
@@ -45,13 +53,16 @@ const AllProductsScreen = () => {
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
+          <>
           <Row>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+            {products && products.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={products.length === 1 ? 12 : 3}>
                 <Product product={product} />
               </Col>
             ))}
           </Row>
+                  <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''}  />
+                  </>
         )}
       </div>
     </>
