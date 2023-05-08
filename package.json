@@ -1,6 +1,6 @@
 {
-  "homepage": "http://jevus09.github.io/electronix-hub",
   "name": "electronix-hub",
+  "engines": { "node": "18.7.0"},
   "version": "1.0.0",
   "description": "MERN app",
   "main": "server.js",
