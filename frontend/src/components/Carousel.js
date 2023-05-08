@@ -3,8 +3,12 @@ import AliceCarousel from 'react-alice-carousel';
 import apple from '../images/carousel/apple.webp';
 import android from '../images/carousel/android.jpg';
 import fitbit from '../images/carousel/fitbit.webp';
-import sale from '../images/carousel/sale.jpg';
-import watch from '../images/carousel/watch.webp';
+import banner1 from '../images/carousel/banner1.jpg'
+import banner2 from '../images/carousel/banner2.jpg'
+import banner3 from '../images/carousel/banner3.jpg'
+import banner4 from '../images/carousel/banner4.jpg'
+import banner5 from '../images/carousel/banner5.jpg'
+import banner6 from '../images/carousel/banner6.webp'
 import { Link } from 'react-router-dom';
 
 
@@ -12,12 +16,13 @@ const Carousel = () => {
   const responsive = {
     0: {
       items: 1,
+      itemsFit: 'fill',
 
 
     },
-    924: {
+    524: {
       items: 1,
-      itemsFit: 'contain ',
+
     },
   };
 
@@ -37,14 +42,35 @@ const Carousel = () => {
       image: fitbit,
       title: 'fitbit',
     },
+
     {
       id: 4,
-      image: sale,
-      title: 'sale',
+      image: banner1,
+      title: 'apple',
     },
     {
       id: 5,
-      image: watch,
+      image: banner2,
+      title: 'android',
+    },
+    {
+      id: 6,
+      image: banner3,
+      title: 'fitbit',
+    },
+    {
+      id: 7,
+      image: banner4,
+      title: 'sale',
+    },
+    {
+      id: 8,
+      image: banner5,
+      title: 'watch',
+    },
+    {
+      id: 9,
+      image: banner6,
       title: 'watch',
     },
   ];
@@ -60,11 +86,11 @@ const Carousel = () => {
       key={item.id}
     >
       <Link to='/products'>
-        <img
+        <img className='carousel-image'
           src={item.image}
           title={item.title}
           alt={item.title}
-          style={{ height:'40vh', maxHeight:'400px', width:'100%' }}
+          style={{ height:'40vh', width:'100%' }}
         />
       </Link>
     </div>
