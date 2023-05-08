@@ -9,6 +9,7 @@ const Paginate = ({pages, page, isAdmin=false, keyword=''}) => {
 
 
   return pages > 1 && (
+    <div style={{ display: "flex", justifyContent: "center", marginTop: '5vh' }}>
             <Pagination>
                 {[...Array(pages).keys()].map(x => (
           <LinkContainer
@@ -16,8 +17,8 @@ const Paginate = ({pages, page, isAdmin=false, keyword=''}) => {
           to={
             !isAdmin
               ? keyword
-                ? `/search/${keyword}/page/${x + 1}`
-                : `/page/${x + 1}`
+                ? `/products/search/${keyword}/page/${x + 1}`
+                : `/products/page/${x + 1}`
               : `/admin/productlist/${x + 1}`
           }
         >
@@ -26,6 +27,7 @@ const Paginate = ({pages, page, isAdmin=false, keyword=''}) => {
                 ))}
 
             </Pagination>
+            </div>
         )
 }
 

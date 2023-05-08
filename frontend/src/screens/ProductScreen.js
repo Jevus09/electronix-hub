@@ -17,6 +17,7 @@ import {
   FormControl,
 } from 'react-bootstrap'
 import Product from '../components/Product'
+import Meta from '../components/Meta'
 
 const ProductScreen = () => {
   const navigate = useNavigate()
@@ -66,6 +67,8 @@ const ProductScreen = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
+        <>
+        <Meta title={product.name}/>
         <Row>
           <Col md={6}>
             <div>
@@ -201,6 +204,7 @@ const ProductScreen = () => {
             </div>
           </Col>
         </Row>
+        </>
       )}
       <div
         style={{

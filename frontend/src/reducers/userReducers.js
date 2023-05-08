@@ -9,7 +9,7 @@ import { USER_DELETE_FAIL, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DETAIL
          USER_UPDATE_ADMIN_REQUEST, 
          USER_UPDATE_ADMIN_RESET, 
          USER_UPDATE_ADMIN_SUCCESS, 
-         USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../constants/userConstants"
+         USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_RESET, USER_UPDATE_SUCCESS } from "../constants/userConstants"
 
          export const userLoginReducer = (state = {}, action) => {
             switch (action.type) {
@@ -64,6 +64,8 @@ export const userUpdateReducer = (state = {}, action ) =>{
             return {loading: false, success: true, userInfo: action.payload}
         case USER_UPDATE_FAIL:
             return{loaing: false, error: action.payload}
+        case USER_UPDATE_RESET:
+            return{} 
          default: 
             return state   
     }

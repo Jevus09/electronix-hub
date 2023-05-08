@@ -8,6 +8,8 @@ import Message from '../components/Message'
 import Categories from '../components/Categories'
 import Banner from '../components/Banner'
 import Carousel from '../components/Carousel'
+import Meta from '../components/Meta'
+
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -24,6 +26,7 @@ const HomeScreen = () => {
 
   return (
     <>
+    <Meta />
     <Carousel />
     <Categories/>
     <div style={{ display:'grid', alignItems:'center', justifyContent:'center', margin: '10vh 0 '}}>
