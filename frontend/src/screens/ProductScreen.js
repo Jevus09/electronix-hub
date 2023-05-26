@@ -222,7 +222,7 @@ const ProductScreen = () => {
         ) : (
           <Row>
             {shuffledProducts.slice(0, 4).map((filteredProduct) => (
-              <Col key={filteredProduct._id}  sm={12} md={6} lg={4} xl={3}>
+              <Col key={filteredProduct._id} sm={12} md={6} lg={4} xl={3}>
                 <Product product={filteredProduct} />
               </Col>
             ))}
